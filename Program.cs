@@ -1,10 +1,30 @@
-﻿namespace UserRegistration
+﻿using System.Text.RegularExpressions;
+
+namespace UserRegistration
 {
     class Program
     {
-        public static void Main(string[] args) 
+        public static void DisplayFName()
         {
-            Console.WriteLine("Welcome To User Registration Problem");
+            Console.WriteLine("Enter your FirstName");
+            string firstName = Console.ReadLine();
+
+            if (Regex.IsMatch(firstName, "^[A-Z][a-z]{2,}$"))
+            {
+                Console.WriteLine("Valid first name");
+            }
+            else
+            {
+                Console.WriteLine("Invalid first name");
+            }
+
+
+
+        }
+
+        public static void Main(string[] args)
+        {
+            Program.DisplayFName();
         }
     }
 }
