@@ -1,39 +1,20 @@
-﻿using System.Text.RegularExpressions;
+﻿using System;
+using System.Text.RegularExpressions;
+using UserRegistration;
 
-namespace UserRegistration
+class Program
 {
-    public class Program
+    public static void Main(string[] args)
     {
-        static void Main(string[] args)
+        try
         {
-            
-            Console.WriteLine("Enter an email address : ");
-            string email = Console.ReadLine();
-
-            
-            if (ValidateEmail(email))
-            {
-                Console.WriteLine("The email address is valid.");
-            }
-            else
-            {
-                Console.WriteLine("The email address is invalid.");
-            }
+            EmailValidator e1 = new EmailValidator();
+            e1.validate("sagar", "shahu", "shahu@gmail.com", "555666", "pass123");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
         }
 
-        static bool ValidateEmail(string email)
-        {
-            
-            string emailRegex = @"^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$";
-
-            
-            Match match = Regex.Match(email, emailRegex);
-
-            
-            return match.Success;
-        }
     }
-
 }
-
-
