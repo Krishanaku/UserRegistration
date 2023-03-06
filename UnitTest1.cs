@@ -1,30 +1,41 @@
 using UserRegistration;
 
-namespace UserValidatorTests
+namespace EmailValidationTests
 {
     [TestClass]
     public class UnitTest1
     {
         [TestMethod]
-
-        public void Validate()
+        public void EmailValidation()
         {
-            //Arrange
-            string firstName = "Sagar";
-            string lastName = "Shahu";
-            string email = "shahu@gmail.com";
-            string mobile = "6254892";
-            string password = "pass123";
-            string expectedOutput = "HAPPY";
-            UserValidator e1 = new UserValidator();
+            // Arrange
+            string email = "example@gmail.com";
 
-            //Act
-            string actualOutput = e1.validate(firstName, lastName, email, mobile, password);
+            bool expectOutput = true;
+            EmailValidator vali = new EmailValidator();
 
-            //Assert
-            Assert.AreEqual(expectedOutput, actualOutput);
+            // Act
+            bool  actualOutput = vali.ValidateEmail(email);
 
+            // Assert
+            Assert.AreEqual(expectOutput,actualOutput);
         }
-            
+
+        [TestMethod]
+        public void InValidation()
+        {
+            // Arrange
+            string email = "example@gmail";
+
+            bool expectOutput = false;
+            EmailValidator vali = new EmailValidator();
+
+            // Act
+            bool actualOutput = vali.ValidateEmail(email);
+
+            // Assert
+            Assert.AreEqual(expectOutput, actualOutput);
+        }
+
     }
 }
